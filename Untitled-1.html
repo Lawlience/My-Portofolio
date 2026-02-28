@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portofolio - Muhammad Lazuardi Listiaji</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .menu-item { transition: all 0.2s ease; }
+        
+        a { text-decoration: none; color: inherit; }
+
+        aside::-webkit-scrollbar { width: 5px; }
+        aside::-webkit-scrollbar-thumb { background: #3f3f3f; border-radius: 10px; }
+
+        #profileDropdown { 
+            display: none; 
+            animation: fadeIn 0.1s ease-out; 
+        }
+        #profileDropdown.show { 
+            display: block; 
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-[#0f0f0f] text-white font-sans">
+
+    <nav class="fixed top-0 w-full bg-[#0f0f0f] flex justify-between items-center px-4 py-2 z-50">
+        <div class="flex items-center gap-4">
+            <i class="fa-solid fa-bars text-xl cursor-pointer p-2 hover:bg-zinc-800 rounded-full"></i>
+            <div class="flex items-center gap-1 text-xl font-bold tracking-tighter cursor-pointer">
+                <span>Muhammad Lazuardi Listiaji</span>
+            </div>
+        </div>
+        
+        <div class="hidden md:flex items-center flex-1 max-w-[600px] ml-10">
+            <div class="flex w-full bg-[#121212] border border-zinc-800 rounded-full overflow-hidden">
+                <input type="text" id="searchInput" placeholder="Search..." class="bg-transparent w-full px-4 py-2 outline-none text-sm">
+                <button class="bg-zinc-800 px-5 border-l border-zinc-800 hover:bg-zinc-700">
+                    <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                </button>
+            </div>
+            <i class="fa-solid fa-microphone ml-4 p-3 bg-zinc-800 rounded-full hover:bg-zinc-700 cursor-pointer"></i>
+        </div>
+
+        <div class="flex items-center gap-3 text-xl relative">
+            <i class="fa-solid fa-video p-2 hover:bg-zinc-800 rounded-full cursor-pointer"></i>
+            <i class="fa-solid fa-bell p-2 hover:bg-zinc-800 rounded-full cursor-pointer"></i>
+            <div class="relative">
+                <img src="profil.jpg" id="profileBtn" class="w-8 h-8 rounded-full ml-2 cursor-pointer object-cover ring-1 ring-zinc-800" alt="Profile" onerror="this.src='https://ui-avatars.com/api/?name=ML&background=random'">
+                
+                <div id="profileDropdown" class="absolute right-0 mt-3 w-72 bg-[#282828] rounded-xl shadow-2xl py-3 z-[60] border border-zinc-700 text-left">
+                    <div class="flex px-4 py-2 gap-4 border-b border-zinc-700 pb-4 mb-2">
+                        <img src="profil.jpg" class="w-10 h-10 rounded-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=ML&background=random'">
+                        <div class="flex flex-col">
+                            <span class="font-medium text-base text-white">Muhammad Lazuardi</span>
+                            <span class="text-sm text-zinc-400">Designer</span>
+                            <a href="#" class="text-sm text-blue-400 mt-2 hover:text-blue-300">Q.s Al-an'am: 116</a>
+                        </div>
+                    </div>
+                    <div class="flex flex-col text-sm text-white">
+                        <div class="px-4 py-2.5 hover:bg-zinc-700 cursor-pointer">Drawing</div>
+                        <div class="px-4 py-2.5 hover:bg-zinc-700 cursor-pointer flex justify-between items-center">
+                            Gaming </div>
+                        <div class="px-4 py-2.5 hover:bg-zinc-700 cursor-pointer">Photograph</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex pt-14">
+        <aside class="w-64 fixed left-0 h-screen overflow-y-auto hidden lg:block p-3 border-r border-zinc-900">
+            <div class="flex flex-col gap-1 border-b border-zinc-800 pb-4">
+                <div class="menu-item flex items-center gap-5 p-2 bg-zinc-800 rounded-lg cursor-pointer">
+                    <i class="fa-solid fa-house w-5 text-center"></i> Home Page
+                </div>
+                <div class="menu-item flex items-center gap-5 p-2 hover:bg-zinc-800 rounded-lg cursor-pointer">
+                    <i class="fa-solid fa-bolt w-5 text-center"></i> Project Kilat
+                </div>
+                <div class="menu-item flex items-center gap-5 p-2 hover:bg-zinc-800 rounded-lg cursor-pointer">
+                    <i class="fa-solid fa-folder-open w-5 text-center"></i> Collection
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <p class="px-2 font-semibold mb-2 text-xs text-zinc-400 uppercase tracking-widest">Personal Contact & Social Media</p>
+                
+                <a href="https://instagram.com/lawlience" target="_blank" class="menu-item flex items-center gap-5 p-2 hover:bg-zinc-800 rounded-lg text-sm cursor-pointer group">
+                    <div class="w-7 h-7 bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 rounded-full flex items-center justify-center">
+                        <i class="fa-brands fa-instagram text-white text-[14px]"></i>
+                    </div>
+                    <span class="flex-1">Instagram</span>
+                    <div class="w-2 h-2 bg-blue-500 rounded-full shadow-[0_0_8px_#3b82f6]"></div>
+                </a>
+
+                <a href="https://instagram.com/ardilastra" target="_blank" class="menu-item flex items-center gap-5 p-2 hover:bg-zinc-800 rounded-lg text-sm cursor-pointer group">
+                    <div class="w-7 h-7 bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 rounded-full flex items-center justify-center">
+                        <i class="fa-brands fa-instagram text-white text-[14px]"></i>
+                    </div>
+                    <span class="flex-1">Instagram (Ilustrator)</span>
+                    <div class="w-2 h-2 bg-blue-500 rounded-full shadow-[0_0_8px_#3b82f6]"></div>
+                </a>
+
+                <a href="https://wa.me/6281218044913" target="_blank" class="menu-item flex items-center gap-5 p-2 hover:bg-zinc-800 rounded-lg text-sm cursor-pointer">
+                    <div class="w-7 h-7 bg-[#25D366] rounded-full flex items-center justify-center">
+                        <i class="fa-brands fa-whatsapp text-white text-[14px]"></i>
+                    </div>
+                    <span>WhatsApp</span>
+                </a>
+
+                <a href="https://linkedin.com/in/MuhammadLazuardi" target="_blank" class="menu-item flex items-center gap-5 p-2 hover:bg-zinc-800 rounded-lg text-sm cursor-pointer">
+                    <div class="w-7 h-7 bg-[#0077B5] rounded-full flex items-center justify-center">
+                        <i class="fa-brands fa-linkedin-in text-white text-[14px]"></i>
+                    </div>
+                    <span>LinkedIn</span>
+                </a>
+                
+                <a href="https://x.com/lawsilens" target="_blank" class="menu-item flex items-center gap-5 p-2 hover:bg-zinc-800 rounded-lg text-sm cursor-pointer">
+                    <div class="w-7 h-7 bg-white rounded-full flex items-center justify-center">
+                        <svg viewBox="0 0 24 24" class="w-3 h-3 fill-black"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                    </div>
+                    <span>X (Twitter)</span>
+                </a>
+
+                <a href="mailto:muhalazuardi@gmail.com" class="menu-item flex items-center gap-5 p-2 hover:bg-zinc-800 rounded-lg text-sm cursor-pointer">
+                    <div class="w-7 h-7 bg-[#EA4335] rounded-full flex items-center justify-center">
+                        <i class="fa-solid fa-envelope text-white text-[12px]"></i>
+                    </div>
+                    <span>Gmail</span>
+                </a>
+            </div>
+
+            <div class="mt-4">
+                <p class="text-[10px] text-zinc-500 px-2">© 2026 Muhammad Lazuardi</p>
+            </div>
+        </aside>
+
+        <main class="lg:ml-64 p-6 w-full">
+            
+            <div class="flex gap-3 mb-6 overflow-x-auto whitespace-nowrap no-scrollbar pb-2">
+                <span class="px-3 py-1 bg-white text-black rounded-lg text-sm font-medium cursor-pointer">All</span>
+                <span class="px-3 py-1 bg-zinc-800 hover:bg-zinc-700 rounded-lg text-sm font-medium cursor-pointer transition">Recent</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 gap-y-10">
+                
+                <div onclick="openModal('image', 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000')" class="flex flex-col gap-3 cursor-pointer group">
+                    <div class="relative bg-zinc-800 aspect-video rounded-xl overflow-hidden shadow-lg">
+                        <img src="4.jpg" class="object-cover w-full h-full group-hover:scale-105 transition duration-500">
+                        <span class="absolute bottom-2 right-2 bg-black/80 text-xs px-2 py-1 rounded font-bold">1 Hlm</span>
+                    </div>
+                    <div class="flex gap-3">
+                        <img src="profil.jpg" class="w-9 h-9 rounded-full object-cover shrink-0" onerror="this.src='https://ui-avatars.com/api/?name=ML'">
+                        <div>
+                            <h3 class="font-bold leading-tight line-clamp-2">CV</h3>
+                            <p class="text-zinc-400 text-sm mt-1">Muhammad Lazuardi</p>
+                            <p class="text-zinc-400 text-xs">20 October 2025</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div onclick="openModal('image', 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000')" class="flex flex-col gap-3 cursor-pointer group">
+                    <div class="relative bg-zinc-800 aspect-video rounded-xl overflow-hidden shadow-lg">
+                        <img src="2.jpg" class="object-cover w-full h-full group-hover:scale-105 transition duration-500">
+                        <span class="absolute bottom-2 right-2 bg-black/80 text-xs px-2 py-1 rounded font-bold">1 Hlm</span>
+                    </div>
+                    <div class="flex gap-3">
+                        <img src="profil.jpg" class="w-9 h-9 rounded-full object-cover shrink-0" onerror="this.src='https://ui-avatars.com/api/?name=ML'">
+                        <div>
+                            <h3 class="font-bold leading-tight line-clamp-2">Internship Goosini LC</h3>
+                            <p class="text-zinc-400 text-sm mt-1">Muhammad Lazuardi</p>
+                            <p class="text-zinc-400 text-xs">14 January 2026</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div onclick="openGallery(['pocky.jpg', 'pocky1.jpg', 'pocky2.jpg', 'pocky3.jpg', 'pocky4.jpg'])" class="flex flex-col gap-3 cursor-pointer group">
+                    <div class="relative bg-zinc-800 aspect-video rounded-xl overflow-hidden shadow-lg">
+                        <img src="1.jpg" class="object-cover w-full h-full group-hover:scale-105 transition duration-500">
+                        <span class="absolute bottom-2 right-2 bg-black/80 text-xs px-2 py-1 rounded font-bold">5 Pg</span>
+                    </div>
+                    <div class="flex gap-3">
+                        <img src="profil.jpg" class="w-9 h-9 rounded-full object-cover shrink-0" onerror="this.src='https://ui-avatars.com/api/?name=ML'">
+                        <div>
+                            <h3 class="font-bold leading-tight line-clamp-2">Packing</h3>
+                            <p class="text-zinc-400 text-sm mt-1">Muhammad Lazuardi</p>
+                            <p class="text-zinc-400 text-xs">10 November 2024</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div onclick="openGallery(['fontgede.png', 'fontkecil.png', 'angka.png'])" class="flex flex-col gap-3 cursor-pointer group">
+                    <div class="relative bg-zinc-800 aspect-video rounded-xl overflow-hidden shadow-lg">
+                        <img src="3.jpg" class="object-cover w-full h-full group-hover:scale-105 transition duration-500">
+                        <span class="absolute bottom-2 right-2 bg-black/80 text-xs px-2 py-1 rounded font-bold">3 Pg</span>
+                    </div>
+                    <div class="flex gap-3">
+                        <img src="profil.jpg" class="w-9 h-9 rounded-full object-cover shrink-0" onerror="this.src='https://ui-avatars.com/api/?name=ML'">
+                        <div>
+                            <h3 class="font-bold leading-tight line-clamp-2">Font Design</h3>
+                            <p class="text-zinc-400 text-sm mt-1">Muhammad Lazuardi</p>
+                            <p class="text-zinc-400 text-xs">7 July 2024</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div onclick="openModal('image', 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000')" class="flex flex-col gap-3 cursor-pointer group">
+                    <div class="relative bg-zinc-800 aspect-video rounded-xl overflow-hidden shadow-lg">
+                        <img src="5.jpg" class="object-cover w-full h-full group-hover:scale-105 transition duration-500">
+                        <span class="absolute bottom-2 right-2 bg-black/80 text-xs px-2 py-1 rounded font-bold">1 Hlm</span>
+                    </div>
+                    <div class="flex gap-3">
+                        <img src="profil.jpg" class="w-9 h-9 rounded-full object-cover shrink-0" onerror="this.src='https://ui-avatars.com/api/?name=ML'">
+                        <div>
+                            <h3 class="font-bold leading-tight line-clamp-2">UMKM Collaboration</h3>
+                            <p class="text-zinc-400 text-sm mt-1">Muhammad Lazuardi</p>
+                            <p class="text-zinc-400 text-xs">17 December 2023</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <div id="videoModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-4 md:p-10">
+        <button onclick="closeModal()" class="absolute top-6 right-6 text-white text-4xl hover:text-zinc-400 z-[110] transition">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div id="modalContent" class="w-full max-w-6xl h-full flex items-center justify-center relative"></div>
+    </div>
+
+    <script>
+        let currentImages = [];
+        let currentIndex = 0;
+
+        // --- LOGIC DROPDOWN PROFIL (BARU) ---
+        const profileBtn = document.getElementById('profileBtn');
+        const profileDropdown = document.getElementById('profileDropdown');
+
+        profileBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            profileDropdown.classList.toggle('show');
+        });
+
+        window.addEventListener('click', (e) => {
+            if (!profileDropdown.contains(e.target) && e.target !== profileBtn) {
+                profileDropdown.classList.remove('show');
+            }
+        });
+
+        // --- LOGIC MEDIA MODAL (TETAP) ---
+        function openModal(type, url) {
+            const modal = document.getElementById('videoModal');
+            const content = document.getElementById('modalContent');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+
+            if (type === 'video') {
+                content.innerHTML = `<video src="${url}" controls autoplay class="max-w-full max-h-full rounded-lg shadow-2xl"></video>`;
+            } 
+            else if (type === 'image') {
+                content.innerHTML = `<img src="${url}" class="max-w-full max-h-full object-contain shadow-2xl rounded-lg">`;
+            }
+            else if (type === 'ppt') {
+                const googleViewer = `https://docs.google.com/gview?url=${url}&embedded=true`;
+                content.innerHTML = `<iframe src="${googleViewer}" frameborder="0" class="w-full h-full bg-white rounded-lg shadow-2xl border-none"></iframe>`;
+            }
+        }
+
+        function openGallery(images) {
+            currentImages = images;
+            currentIndex = 0;
+            const modal = document.getElementById('videoModal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            renderGallery();
+        }
+
+        function renderGallery() {
+            const content = document.getElementById('modalContent');
+            content.innerHTML = `
+                <div class="relative w-full h-full flex items-center justify-center">
+                    <button onclick="prevImg()" class="absolute left-0 text-white text-6xl hover:text-zinc-400 transition z-50 p-4">&lsaquo;</button>
+                    <img src="${currentImages[currentIndex]}" class="max-w-full max-h-full object-contain shadow-2xl rounded-lg animate-in fade-in duration-300">
+                    <button onclick="nextImg()" class="absolute right-0 text-white text-6xl hover:text-zinc-400 transition z-50 p-4">&rsaquo;</button>
+                    <div class="absolute -bottom-10 md:bottom-2 bg-zinc-800/80 px-4 py-1 rounded-full text-sm font-mono tracking-widest text-white">
+                        ${currentIndex + 1} / ${currentImages.length}
+                    </div>
+                </div>
+            `;
+        }
+
+        function nextImg() {
+            currentIndex = (currentIndex + 1) % currentImages.length;
+            renderGallery();
+        }
+
+        function prevImg() {
+            currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+            renderGallery();
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('videoModal');
+            const content = document.getElementById('modalContent');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            content.innerHTML = ''; 
+        }
+
+        const menuItems = document.querySelectorAll('.menu-item');
+        menuItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                if (item.tagName === 'A') return;
+                menuItems.forEach(i => i.classList.remove('bg-zinc-800'));
+                item.classList.add('bg-zinc-800');
+            });
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === "Escape") closeModal();
+        });
+    </script>
+
+</body>
+</html>
