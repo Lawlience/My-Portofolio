@@ -24,17 +24,37 @@
         #profileDropdown.show { 
             display: block; 
         }
+
+        /* --- Tambahan CSS untuk Sidebar Mobile --- */
+        aside {
+            transition: transform 0.3s ease;
+            z-index: 100;
+        }
+
+        @media (max-width: 1023px) {
+            aside {
+                transform: translateX(-100%);
+                background-color: #0f0f0f;
+                width: 280px;
+                display: block !important; /* Memaksa muncul di HP tapi di luar layar */
+            }
+            aside.show-sidebar {
+                transform: translateX(0);
+                box-shadow: 20px 0 50px rgba(0,0,0,0.8);
+            }
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-<body class="bg-[#0f0f0f] text-white font-sans">
+<body class="bg-[#0f0f0f] text-white font-sans overflow-x-hidden">
 
-    <nav class="fixed top-0 w-full bg-[#0f0f0f] flex justify-between items-center px-4 py-2 z-50">
+    <nav class="fixed top-0 w-full bg-[#0f0f0f] flex justify-between items-center px-4 py-2 z-[110]">
         <div class="flex items-center gap-4">
-            <i class="fa-solid fa-bars text-xl cursor-pointer p-2 hover:bg-zinc-800 rounded-full"></i>
+            <i id="menuBtn" class="fa-solid fa-bars text-xl cursor-pointer p-2 hover:bg-zinc-800 rounded-full"></i>
             <div class="flex items-center gap-1 text-xl font-bold tracking-tighter cursor-pointer">
                 <span>Muhammad Lazuardi Listiaji</span>
             </div>
@@ -56,7 +76,7 @@
             <div class="relative">
                 <img src="profil.jpg" id="profileBtn" class="w-8 h-8 rounded-full ml-2 cursor-pointer object-cover ring-1 ring-zinc-800" alt="Profile" onerror="this.src='https://ui-avatars.com/api/?name=ML&background=random'">
                 
-                <div id="profileDropdown" class="absolute right-0 mt-3 w-72 bg-[#282828] rounded-xl shadow-2xl py-3 z-[60] border border-zinc-700 text-left">
+                <div id="profileDropdown" class="absolute right-0 mt-3 w-72 bg-[#282828] rounded-xl shadow-2xl py-3 z-[120] border border-zinc-700 text-left">
                     <div class="flex px-4 py-2 gap-4 border-b border-zinc-700 pb-4 mb-2">
                         <img src="profil.jpg" class="w-10 h-10 rounded-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=ML&background=random'">
                         <div class="flex flex-col">
@@ -77,7 +97,7 @@
     </nav>
 
     <div class="flex pt-14">
-        <aside class="w-64 fixed left-0 h-screen overflow-y-auto hidden lg:block p-3 border-r border-zinc-900">
+        <aside id="sidebar" class="w-64 fixed left-0 h-screen overflow-y-auto hidden lg:block p-3 border-r border-zinc-900 bg-[#0f0f0f]">
             <div class="flex flex-col gap-1 border-b border-zinc-800 pb-4">
                 <div class="menu-item flex items-center gap-5 p-2 bg-zinc-800 rounded-lg cursor-pointer">
                     <i class="fa-solid fa-house w-5 text-center"></i> Home Page
@@ -143,7 +163,7 @@
             </div>
         </aside>
 
-        <main class="lg:ml-64 p-6 w-full">
+        <main id="mainContent" class="lg:ml-64 p-6 w-full transition-all duration-300">
             
             <div class="flex gap-3 mb-6 overflow-x-auto whitespace-nowrap no-scrollbar pb-2">
                 <span class="px-3 py-1 bg-white text-black rounded-lg text-sm font-medium cursor-pointer">All</span>
@@ -152,7 +172,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 gap-y-10">
                 
-                <div onclick="openModal('image', 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000')" class="flex flex-col gap-3 cursor-pointer group">
+                <div onclick="openModal('image', '4.jpg')" class="flex flex-col gap-3 cursor-pointer group">
                     <div class="relative bg-zinc-800 aspect-video rounded-xl overflow-hidden shadow-lg">
                         <img src="4.jpg" class="object-cover w-full h-full group-hover:scale-105 transition duration-500">
                         <span class="absolute bottom-2 right-2 bg-black/80 text-xs px-2 py-1 rounded font-bold">1 Hlm</span>
@@ -167,7 +187,7 @@
                     </div>
                 </div>
 
-                <div onclick="openModal('image', 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000')" class="flex flex-col gap-3 cursor-pointer group">
+                <div onclick="openModal('image', '2.jpg')" class="flex flex-col gap-3 cursor-pointer group">
                     <div class="relative bg-zinc-800 aspect-video rounded-xl overflow-hidden shadow-lg">
                         <img src="2.jpg" class="object-cover w-full h-full group-hover:scale-105 transition duration-500">
                         <span class="absolute bottom-2 right-2 bg-black/80 text-xs px-2 py-1 rounded font-bold">1 Hlm</span>
@@ -212,7 +232,7 @@
                     </div>
                 </div>
 
-                <div onclick="openModal('image', 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000')" class="flex flex-col gap-3 cursor-pointer group">
+                <div onclick="openModal('image', '5.jpg')" class="flex flex-col gap-3 cursor-pointer group">
                     <div class="relative bg-zinc-800 aspect-video rounded-xl overflow-hidden shadow-lg">
                         <img src="5.jpg" class="object-cover w-full h-full group-hover:scale-105 transition duration-500">
                         <span class="absolute bottom-2 right-2 bg-black/80 text-xs px-2 py-1 rounded font-bold">1 Hlm</span>
@@ -231,8 +251,8 @@
         </main>
     </div>
 
-    <div id="videoModal" class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-4 md:p-10">
-        <button onclick="closeModal()" class="absolute top-6 right-6 text-white text-4xl hover:text-zinc-400 z-[110] transition">
+    <div id="videoModal" class="hidden fixed inset-0 z-[200] flex items-center justify-center bg-black/95 p-4 md:p-10">
+        <button onclick="closeModal()" class="absolute top-6 right-6 text-white text-4xl hover:text-zinc-400 z-[210] transition">
             <i class="fa-solid fa-xmark"></i>
         </button>
         <div id="modalContent" class="w-full max-w-6xl h-full flex items-center justify-center relative"></div>
@@ -242,7 +262,24 @@
         let currentImages = [];
         let currentIndex = 0;
 
-        // --- LOGIC DROPDOWN PROFIL (BARU) ---
+        // --- LOGIC HAMBURGER MENU (BARU) ---
+        const menuBtn = document.getElementById('menuBtn');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('mainContent');
+
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (window.innerWidth >= 1024) {
+                // Desktop: Toggle geser main content
+                sidebar.classList.toggle('lg:block');
+                mainContent.classList.toggle('lg:ml-64');
+            } else {
+                // HP: Toggle class show-sidebar
+                sidebar.classList.toggle('show-sidebar');
+            }
+        });
+
+        // --- LOGIC DROPDOWN PROFIL ---
         const profileBtn = document.getElementById('profileBtn');
         const profileDropdown = document.getElementById('profileDropdown');
 
@@ -251,13 +288,19 @@
             profileDropdown.classList.toggle('show');
         });
 
+        // Klik di mana saja untuk menutup menu/dropdown
         window.addEventListener('click', (e) => {
+            // Tutup Dropdown Profil
             if (!profileDropdown.contains(e.target) && e.target !== profileBtn) {
                 profileDropdown.classList.remove('show');
             }
+            // Tutup Sidebar di HP
+            if (window.innerWidth < 1024 && !sidebar.contains(e.target) && e.target !== menuBtn) {
+                sidebar.classList.remove('show-sidebar');
+            }
         });
 
-        // --- LOGIC MEDIA MODAL (TETAP) ---
+        // --- LOGIC MEDIA MODAL ---
         function openModal(type, url) {
             const modal = document.getElementById('videoModal');
             const content = document.getElementById('modalContent');
@@ -290,7 +333,7 @@
             content.innerHTML = `
                 <div class="relative w-full h-full flex items-center justify-center">
                     <button onclick="prevImg()" class="absolute left-0 text-white text-6xl hover:text-zinc-400 transition z-50 p-4">&lsaquo;</button>
-                    <img src="${currentImages[currentIndex]}" class="max-w-full max-h-full object-contain shadow-2xl rounded-lg animate-in fade-in duration-300">
+                    <img src="${currentImages[currentIndex]}" class="max-w-full max-h-full object-contain shadow-2xl rounded-lg">
                     <button onclick="nextImg()" class="absolute right-0 text-white text-6xl hover:text-zinc-400 transition z-50 p-4">&rsaquo;</button>
                     <div class="absolute -bottom-10 md:bottom-2 bg-zinc-800/80 px-4 py-1 rounded-full text-sm font-mono tracking-widest text-white">
                         ${currentIndex + 1} / ${currentImages.length}
@@ -330,7 +373,5 @@
             if (e.key === "Escape") closeModal();
         });
     </script>
-
 </body>
-
 </html>
