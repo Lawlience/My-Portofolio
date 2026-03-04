@@ -36,7 +36,7 @@
                 transform: translateX(-100%);
                 background-color: #0f0f0f;
                 width: 280px;
-                display: block !important; /* Memaksa muncul di HP tapi di luar layar */
+                display: block !important;
             }
             aside.show-sidebar {
                 transform: translateX(0);
@@ -187,10 +187,10 @@
                     </div>
                 </div>
 
-                <div onclick="openModal('image', '2.jpg')" class="flex flex-col gap-3 cursor-pointer group">
+                <div onclick="openModal('pdf', 'magang.pdf')" class="flex flex-col gap-3 cursor-pointer group">
                     <div class="relative bg-zinc-800 aspect-video rounded-xl overflow-hidden shadow-lg">
                         <img src="2.jpg" class="object-cover w-full h-full group-hover:scale-105 transition duration-500">
-                        <span class="absolute bottom-2 right-2 bg-black/80 text-xs px-2 py-1 rounded font-bold">1 Hlm</span>
+                        <span class="absolute bottom-2 right-2 bg-black/80 text-xs px-2 py-1 rounded font-bold">25 Page</span>
                     </div>
                     <div class="flex gap-3">
                         <img src="profil.jpg" class="w-9 h-9 rounded-full object-cover shrink-0" onerror="this.src='https://ui-avatars.com/api/?name=ML'">
@@ -232,10 +232,10 @@
                     </div>
                 </div>
 
-                <div onclick="openModal('image', '5.jpg')" class="flex flex-col gap-3 cursor-pointer group">
+                <div onclick="openModal('pdf', 'umkm.pdf')" class="flex flex-col gap-3 cursor-pointer group">
                     <div class="relative bg-zinc-800 aspect-video rounded-xl overflow-hidden shadow-lg">
                         <img src="5.jpg" class="object-cover w-full h-full group-hover:scale-105 transition duration-500">
-                        <span class="absolute bottom-2 right-2 bg-black/80 text-xs px-2 py-1 rounded font-bold">1 Hlm</span>
+                        <span class="absolute bottom-2 right-2 bg-black/80 text-xs px-2 py-1 rounded font-bold">13 Page</span>
                     </div>
                     <div class="flex gap-3">
                         <img src="profil.jpg" class="w-9 h-9 rounded-full object-cover shrink-0" onerror="this.src='https://ui-avatars.com/api/?name=ML'">
@@ -262,7 +262,7 @@
         let currentImages = [];
         let currentIndex = 0;
 
-        // --- LOGIC HAMBURGER MENU (BARU) ---
+        // --- LOGIC HAMBURGER MENU ---
         const menuBtn = document.getElementById('menuBtn');
         const sidebar = document.getElementById('sidebar');
         const mainContent = document.getElementById('mainContent');
@@ -270,11 +270,9 @@
         menuBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             if (window.innerWidth >= 1024) {
-                // Desktop: Toggle geser main content
                 sidebar.classList.toggle('lg:block');
                 mainContent.classList.toggle('lg:ml-64');
             } else {
-                // HP: Toggle class show-sidebar
                 sidebar.classList.toggle('show-sidebar');
             }
         });
@@ -288,19 +286,16 @@
             profileDropdown.classList.toggle('show');
         });
 
-        // Klik di mana saja untuk menutup menu/dropdown
         window.addEventListener('click', (e) => {
-            // Tutup Dropdown Profil
             if (!profileDropdown.contains(e.target) && e.target !== profileBtn) {
                 profileDropdown.classList.remove('show');
             }
-            // Tutup Sidebar di HP
             if (window.innerWidth < 1024 && !sidebar.contains(e.target) && e.target !== menuBtn) {
                 sidebar.classList.remove('show-sidebar');
             }
         });
 
-        // --- LOGIC MEDIA MODAL ---
+        // --- LOGIC MEDIA MODAL (DIUPDATE UNTUK PDF) ---
         function openModal(type, url) {
             const modal = document.getElementById('videoModal');
             const content = document.getElementById('modalContent');
@@ -312,6 +307,17 @@
             } 
             else if (type === 'image') {
                 content.innerHTML = `<img src="${url}" class="max-w-full max-h-full object-contain shadow-2xl rounded-lg">`;
+            }
+            else if (type === 'pdf') {
+                content.innerHTML = `
+                <div class="w-full h-full flex flex-col items-center">
+                    <embed src="${url}" type="application/pdf" class="w-full h-full rounded-lg shadow-2xl">
+                    <div class="mt-4">
+                        <a href="${url}" download class="bg-zinc-800 hover:bg-zinc-700 text-white px-6 py-2 rounded-full text-sm font-bold transition flex items-center gap-2">
+                            <i class="fa-solid fa-download"></i> Download Dokumen
+                        </a>
+                    </div>
+                </div>`;
             }
             else if (type === 'ppt') {
                 const googleViewer = `https://docs.google.com/gview?url=${url}&embedded=true`;
